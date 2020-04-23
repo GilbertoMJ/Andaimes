@@ -31,6 +31,18 @@ def CREATE():
         `codigoDocumentoVBA` TEXT,\
         `codigoDocumentoPython` TEXT,\
         PRIMARY KEY(`nome`));')
+    # CONTRATO # 
+    c.execute('CREATE TABLE IF NOT EXISTS CONTRATO (\
+        `id` VARCHAR(6) NOT NULL,\
+        FOREIGN KEY (id_cliente) REFERENCES CLIENTE(cpf),\
+        PRIMARY KEY(`id`))')
+    # PRODUTO # 
+    c.execute('CREATE TABLE IF NOT EXISTS PRODUTO (\
+        `id` VARCHAR(6) NOT NULL,\
+        `quantidade` INT NOT NULL,\
+        FOREIGN KEY (id_contrato) REFERENCES CONTRATO(id),\
+        FOREIGN KEY (id_peca) REFERENCES CONTRATO(codigo),\
+        PRIMARY KEY(`id`))')
     connection.commit()
     
 CREATE()

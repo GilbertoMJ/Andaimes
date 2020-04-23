@@ -9,6 +9,7 @@ def CREATE():
         `id_pagamento` INT NOT NULL,\
         `data_pagamento` DATE,\
         `forma_pagamento` INT,\
+        `data_vencimento` DATE\
         PRIMARY KEY(`id_pagamento`))')
     connection.commit()
 CREATE()
